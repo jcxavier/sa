@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<CLANG_XML>
+  <TranslationUnit>
+    <Typedef id="_1" context="_2" name="__int128_t" type="_4"/>
+    <Typedef id="_5" context="_2" name="__uint128_t" type="_7"/>
+    <CXXRecord id="_8" file="f1" line="102" col="16" context="_2" name="__va_list_tag" type="_9">
+      <Field id="_A" file="f1" line="102" col="42" context="_8" name="gp_offset" type="_C" access="public"/>
+      <Field id="_D" file="f1" line="102" col="63" context="_8" name="fp_offset" type="_C" access="public"/>
+      <Field id="_E" file="f1" line="102" col="81" context="_8" name="overflow_arg_area" type="_10" access="public"/>
+      <Field id="_13" file="f1" line="102" col="107" context="_8" name="reg_save_area" type="_10" access="public"/>
+    </CXXRecord>
+    <Typedef id="_14" file="f1" line="102" col="123" context="_2" name="__va_list_tag" type="_16"/>
+    <Typedef id="_18" file="f1" line="102" col="159" context="_2" name="__builtin_va_list" type="_1A"/>
+    <Function id="_1D" file="f2" line="17" col="5" context="_2" name="main" type="_1F" function_type="_20" num_args="2" main="1" externc="1" global="1">
+      <ParmVar id="_21" file="f2" line="17" col="14" context="_1D" name="argc" type="_1F"/>
+      <ParmVar id="_22" file="f2" line="17" col="26" context="_1D" name="argv" type="_24"/>
+      <Body>
+        <CompoundStmt file="f2" line="18" col="1" endline="32" endcol="1" num_stmts="1">
+          <ReturnStmt file="f2" line="31" col="5" endcol="12">
+            <IntegerLiteral file="f2" line="31" col="12" type="_1F" value="0"/>
+          </ReturnStmt>
+        </CompoundStmt>
+      </Body>
+    </Function>
+  </TranslationUnit>
+  <ReferenceSection>
+    <Types>
+      <PointerType type="_26" id="_24"/>
+      <PointerType type="_28" id="_26"/>
+      <FundamentalType kind="char" id="_28"/>
+      <FundamentalType kind="void" id="_12"/>
+      <PointerType type="_12" id="_10"/>
+      <FundamentalType kind="int" id="_1F"/>
+      <FunctionType result_type="_1F" call_conv="" id="_20"/>
+      <ElaboratedType keyword="struct" type="_9" id="_16"/>
+      <Record name="__va_list_tag" kind="struct" context="_2" id="_9"/>
+      <FundamentalType kind="unsigned int" id="_C"/>
+      <Typedef type="_16" name="__va_list_tag" context="_2" id="_1C"/>
+      <FundamentalType kind="__uint128_t" id="_7"/>
+      <FundamentalType kind="__int128_t" id="_4"/>
+      <ArrayType type="_1C" size="1" id="_1A"/>
+    </Types>
+    <Contexts>
+      <TranslationUnit id="_2"/>
+      <CXXRecord id="_8" name="__va_list_tag" type="_9" context="_2"/>
+      <Function id="_1D" name="main" type="_20" context="_2"/>
+    </Contexts>
+    <Files>
+      <File id="f1" name="&amp;lt;built-in&amp;gt;"/>
+      <File id="f2" name="simple.cpp"/>
+    </Files>
+  </ReferenceSection>
+</CLANG_XML>
