@@ -21,4 +21,4 @@ echo "<AST>" >> $2
 echo -e "\n\t<SourceCodeFile> "$1" </SourceCodeFile>\n" >> $2
 eval "xgrep -x '//TranslationUnit/*[@file="$FXX"]' $SRCXML >> $2"
 echo -e "\n</AST>" >> $2
-#rm $SRCXML
+rm $SRCXML
