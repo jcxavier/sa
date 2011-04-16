@@ -17,28 +17,24 @@ fi
 
 E=`./metrics/halstead/effortToImplement.sh $1 $2`
 
-calc="define int(number) {
-   auto oldscale
-   oldscale = scale
-   scale = 0
-   number /= 1
-   scale = oldscale
-   return number
-}
+calc="define int(number) {\n
+\tauto oldscale\n
+\toldscale = scale\n
+\tscale = 0\n
+\tnumber /= 1\n
+\tscale = oldscale\n
+\treturn number\n
+}\n
+\n
+define power(number,exponent) {\n
+\tif (exponent == int(exponent)) {\n
+\t\treturn number ^ exponent\n 
+\t} else {\n
+\t\treturn e( exponent*l(number) )\n
+\t}\n
+}\n
+\n
+power("$E",2/3)/3000"
 
-define power(number,exponent) {
-   if (exponent == int(exponent)) {
-      return number ^ exponent 
-   } else {
-      return e( exponent * l(number) )
-   }
-}
-
-power("$E",2/3)/3000
-"
-
-echo $E
-B=`echo $calc | bc -l`
-B=${B/%.*/}
-
-echo $B
+B=`echo -e $calc | bc -l`
+echo "0"${B:0:7}
