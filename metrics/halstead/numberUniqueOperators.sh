@@ -15,12 +15,6 @@ if [ $# -ne 2 ]; then
 fi
 
 
-# hash functions
-hput() {
-  eval "$1""$2"='$3'
-}
-
-
 SRCCODE=$1
 XMLDUMP=$2
 
@@ -49,7 +43,7 @@ OPLIST=`grep '<BinaryOperator \|<UnaryOperator ' $XMLDUMP | awk '{ str = substr(
 print substr(str, 0, length(str) - 2) }'`
 
 for OPITEM in $OPLIST; do
-    hput OPHASH $OPITEM 1
+    eval "OPHASH""$OPITEM"='1'
 done
 
 for h in ${!OPHASH*}; do

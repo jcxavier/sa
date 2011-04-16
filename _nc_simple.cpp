@@ -40,14 +40,14 @@ int arrayz[10001];
 #include <iostream>
 #include <string>
 
-// this is my main and short void signed unsigned here are reserved words
-int main(int argc, char* argv[]) // this is main commenting
+
+int main(int argc, char* argv[]) 
 {
     int a = 3;
     int b = 2;
-// lol    
+
     signed long ull = -11;
-    unsigned /* cant touch this */ int uintlol = 1;
+    unsigned  int uintlol = 1;
     uintlol = 2;
     
     bool bvar = true;

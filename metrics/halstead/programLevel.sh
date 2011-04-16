@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # author: João Xavier
-# date: 15/04/2011
+# date: 16/04/2011
 #
-# metric: Program Length
+# metric: Program Level
 # language: C, C++
 #
 
@@ -13,8 +13,11 @@ if [ $# -ne 2 ]; then
     echo "usage: "$ME" <source code file> <xml dump file>"
     exit
 fi
+ 
 
-TNOPERANDS=`./metrics/totalNumberOperands.sh $1 $2`
-TNOPERATORS=`./metrics/totalNumberOperators.sh $1 $2`
-let PL=$TNOPERANDS+$TNOPERATORS
-echo $PL
+D=`./metrics/halstead/difficultyLevel.sh $1 $2`
+
+calc="1/"$D
+
+L=`echo $calc | bc -l`
+echo "0"${L:0:7}
