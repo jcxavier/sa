@@ -1,5 +1,17 @@
 Metrics for the Static Analysis component to integrate with DOMjudge / Moodle.
+Currently in use in my MSc thesis.
 
-Currentl in use in my MSc thesis.
+--- USAGE ---
+Only applies to C / C++. Uses clang and xgrep (in repo).
+
+Note: all scripts should be executed from the source file folder
+./dump.sh <SOURCE FILE> <XML DUMP FILE TO BE GENERATED>
+
+A _nc_<SOURCE FILE> file will be generated. This is a copy of the original file without the comments.
+In most metrics, this is the file that should be used.
+
+Example:
+./metrics/halstead/timeToImplement.sh _nc_<SOURCE FILE> <XML DUMP FILE GENERATED>
+-------------
 
 João Xavier

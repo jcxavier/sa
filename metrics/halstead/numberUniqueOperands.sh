@@ -44,7 +44,7 @@ done
 # floating literals
 
 TMPFILE="____TMP_FILE__"
-sed -e 's/[^0-9. ]*//g' -e  's/ \+/ /g' $SRCCODE | grep '[0-9\| *]\.[0-9+]' | sed 's/ //g' > $TMPFILE"_"
+sed -e 's/[^0-9. ]*//g' -e  's/ \+/ /g' $SRCCODE | tr ' ' '\n' | grep '[0-9]*\.[0-9+]' | sed 's/ //g' > $TMPFILE"_"
 sort -u $TMPFILE"_" > $TMPFILE
 
 FLOATLITCOUNT=`grep '.' $TMPFILE -c`

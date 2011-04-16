@@ -24,9 +24,7 @@ typedef struct AAADZDSD { double asd; float c; } AAZ;
 
 static int XYZ = 12;
 
-double ez = 0000.0 + 
-1.10 + 
-1.0 +
+double ez = 0000.0 + 1.10 + 1.0 +
  0.00 -
   0.00 
   + 
