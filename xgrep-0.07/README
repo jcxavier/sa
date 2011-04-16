@@ -1,0 +1,21 @@
+		             XGrep: XML Grep
+
+  XGrep provides a grep-like utility for XML files. See the man page
+  for further details. A number of similar utilities are available,
+  including
+
+     xmlgrep  http://search.cpan.org/dist/XML-Twig/tools/xml_grep/xml_grep
+     xmlgrep  http://robur.slu.se/jensl/xmlclitools/
+     xmlstar  http://xmlstar.sourceforge.net/
+     sgrep    http://www.cs.helsinki.fi/u/jjaakkol/sgrep.html
+     xgrep    http://software.decisionsoft.com/pathanXgrepDocumentation.html
+  
+  The name of this software was chosen after a careful web search for
+  existing software with the same name. The other xgrep, listed above,
+  was released since then. Given the apparent futility of trying to
+  avoid all such conflicts, this software has not been renamed.
+
+  Unless explicitly noted otherwise, files in this distribution are
+  copyright of Brendt Wohlberg and are released under the GNU General
+  Public License, the terms of which are described in the GPL file
+  included in this distribution.
