@@ -65,16 +65,29 @@ int main(int argc, char* argv[]) // this is main commenting
     
     abc st;
     
-    struct abcx
-    {
-        int x;
-        int y;
-    };
-
-    class Lolx
-    {
-        int a;
-    };
+   
+   switch (c)
+   {
+       case 1:
+       a = a; break;
+       case 2:
+       a = b; break;
+       case 3:
+       b = a; break;
+       default:
+       b = b;
+   }
+   
+   while (shortie--)
+   {
+       for (int i = 0; i < b || i > a; i++)
+           c += i;
+   }
+   
+   do {
+       c += mpy(a,b);
+   } while(shortie--);
+   
     
     st.x = 2;
     st.y = 3;
