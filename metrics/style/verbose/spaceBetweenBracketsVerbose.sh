@@ -3,7 +3,7 @@
 # author: João Xavier
 # date: 20/04/2011
 #
-# metric: Check if Tabs Exist (Verbose)
+# metric: Space Between Brackets (Verbose)
 # language: C, C++
 #
 
@@ -14,4 +14,6 @@ if [ $# -ne 1 ]; then
     exit
 fi
 
-grep . $1 -n | awk '/\t/'
+SRCCODE=$1
+
+grep '){' $SRCCODE -n

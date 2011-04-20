@@ -17,4 +17,4 @@ fi
 SRCCODE=$1
 MAXSIZE=$2
 
-grep . $SRCCODE | awk '{ if (length($0) > '$MAXSIZE') print $0 }'
+grep . $SRCCODE -n | awk '{ if (length($0) > '$MAXSIZE') print $0 }'
