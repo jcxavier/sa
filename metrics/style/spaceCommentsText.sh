@@ -3,7 +3,7 @@
 # author: João Xavier
 # date: 20/04/2011
 #
-# metric: Space Between Brackets
+# metric: Space Between Comments and Text
 # language: C, C++
 #
 
@@ -16,7 +16,7 @@ fi
 
 SRCCODE=$1
 
-SPACES=`grep '){' $SRCCODE -c`
+SPACES=`grep '/\*[^[:space:]]\|//[^[:space:]]' -c $SRCCODE`
 
 if [ $SPACES -gt 0 ]; then
     SPACES=1

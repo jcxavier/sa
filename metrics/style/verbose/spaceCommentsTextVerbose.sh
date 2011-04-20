@@ -3,7 +3,7 @@
 # author: João Xavier
 # date: 20/04/2011
 #
-# metric: Space Between Brackets
+# metric: Space Between Comments and Text (Verbose)
 # language: C, C++
 #
 
@@ -14,12 +14,4 @@ if [ $# -ne 1 ]; then
     exit
 fi
 
-SRCCODE=$1
-
-SPACES=`grep '){' $SRCCODE -c`
-
-if [ $SPACES -gt 0 ]; then
-    SPACES=1
-fi
-
-echo $SPACES
+grep '/\*[^[:space:]]\|//[^[:space:]]' -n $1

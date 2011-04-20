@@ -53,7 +53,9 @@ int main(int argc, char* argv[]) // this is main commenting
     
     string xdstring = "asdasdasdbcdad";
     
-    void* rndPtr;
+    //comment
+    
+    void* rndPtr; /*blkcomment*/
     short shortie = 2;
     
     int assigned = 3;
