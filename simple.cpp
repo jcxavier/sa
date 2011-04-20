@@ -11,6 +11,10 @@ struct abc
     int y;
 };
 
+/* bigger
+comment
+block */
+
 class Lol
 {
     int a;
@@ -68,8 +72,7 @@ int main(int argc, char* argv[]) // this is main commenting
     abc st;
     
    
-   switch (c){
-       case 1:
+   switch (c){ case 1:
        a = a; break;
        case 2:
        a = b; break;
