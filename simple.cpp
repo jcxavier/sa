@@ -66,8 +66,7 @@ int main(int argc, char* argv[]) // this is main commenting
     abc st;
     
    
-   switch (c)
-   {
+   switch (c){
        case 1:
        a = a; break;
        case 2:
@@ -96,6 +95,8 @@ int main(int argc, char* argv[]) // this is main commenting
     aaz.asd = st.x + 3 - RND_CONSTANT;
     
     cout << "Hello world " << st.x << " i are lol" << endl;
+    
+    {}
     
     {
         arrayz[30] = 0;

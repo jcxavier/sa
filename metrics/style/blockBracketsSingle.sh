@@ -16,7 +16,7 @@ fi
 
 SRCCODE=$1
 
-BLKBRACKETS=`grep -e '{.*}' -c $SRCODE`
+BLKBRACKETS=`grep -e '{.*}' -c $SRCCODE`
 
 if [ $BLKBRACKETS -gt 0 ]; then
     BLKBRACKETS=1
