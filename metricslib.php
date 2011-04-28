@@ -25,12 +25,12 @@ function getAllAvailableMetrics($lang)
     return $metrics[$lang];
 }
 
-$mainFile = 'simple.c';
+$mainFile = 'simple.cpp';
 $lang =  getProgrammingLanguage($mainFile);
-
-
 
 $metrics = getAllAvailableMetrics($lang);
 var_dump($metrics);
+
+system("dump.sh " . $mainFile . "_DUMP_.xml", $retval);
 
 ?>
