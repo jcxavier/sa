@@ -9,7 +9,7 @@
 
 ME="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
 
-if [ $# -ne 2 ]; then
+if [ $# -ne 1 ]; then
     echo "usage: "$ME" <xml dump file>"
     exit
 fi
