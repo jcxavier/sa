@@ -7,6 +7,9 @@
 // String constants
 define('METRICS_PATH', './metrics/');
 define('STYLE_VERBOSE_PATH', './metrics/style/verbose/');
+define('NC_PREFIX', '_nc_');
+define('DUMP_SCRIPT', './dump.sh');
+
 define('VERBOSE_EXT', 'Verbose');
 define('HALSTEAD', 'halstead');
 define('STYLE', 'style');
@@ -22,12 +25,12 @@ $metrics['SQL'] =       array();
 
 // Map of programming language extensions to programming language names
 $progExt = array(
-    'c' => 'C',
-    'cpp' => 'C++',
-    'cs' => 'C#',
-    'java' => 'Java',
-    'scm' => 'Scheme',
-    'sql' => 'SQL'
+    'c' =>      'C',
+    'cpp' =>    'C++',
+    'cs' =>     'C#',
+    'java' =>   'Java',
+    'scm' =>    'Scheme',
+    'sql' =>    'SQL'
 );
 
 // Halstead Software Science
