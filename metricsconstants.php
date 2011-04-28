@@ -6,6 +6,7 @@
 
 // String constants
 define('METRICS_PATH', './metrics/');
+define('STYLE_VERBOSE_PATH', './metrics/style/verbose/');
 define('VERBOSE_EXT', 'Verbose');
 define('HALSTEAD', 'halstead');
 define('STYLE', 'style');
