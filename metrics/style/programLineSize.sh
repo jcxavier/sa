@@ -9,13 +9,18 @@
 
 ME="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
 
-if [ $# -ne 2 ]; then
-    echo "usage: "$ME" <source code file> <max line size>"
+if [[ $# -lt 1 || $# -gt 2 ]]; then
+    echo "usage: "$ME" <source code file> [max line size (defaults to 78)]"
     exit
 fi
 
 SRCCODE=$1
-MAXSIZE=$2
+MAXSIZE='78'
+
+if [ $# -eq 2 ]; then
+    MAXSIZE=$2
+fi
+
 TMPFILE="____"$SRCCODE
 
 grep . $SRCCODE | awk '{ if (length($0) > '$MAXSIZE') print 1 }' > $TMPFILE

@@ -25,8 +25,9 @@ function getAllAvailableMetrics($lang)
     return $metrics[$lang];
 }
 
-function executeMetrics($metrics, $exec)
+function setMetrics(/* TODO */)
 {
+    /*
     $exec[HALSTEAD]['difficultyLevel'] =        0;
     $exec[HALSTEAD]['effortToImplement'] =      0;
     $exec[HALSTEAD]['numberDeliveredBugs'] =    0;
@@ -45,32 +46,71 @@ function executeMetrics($metrics, $exec)
     $exec[STYLE]['spaceCommentsText'] =         0;
     $exec[STYLE]['spaceParentesisBrackets'] =   0;
     
-    $exec[MISC]['cyclomaticComplexity'] = system("./metrics/" . $metrics[MISC]['cyclomaticComplexity'] . " _DUMP_.xml");
-    $exec[MISC]['linesOfCode'] = system("./metrics/" . $metrics[MISC]['linesOfCode'] . " simple.cpp");
+    $exec[MISC]['cyclomaticComplexity'] =       0;
+    $exec[MISC]['linesOfCode'] =                0;
+    */
     
+    $exec[HALSTEAD]['numberUniqueOperands'] =   0;
+    $exec[HALSTEAD]['numberUniqueOperators'] =  0;
+    $exec[HALSTEAD]['programLength'] =          0;
+    $exec[HALSTEAD]['timeToImplement'] =        0;
     
-    foreach (array_keys($exec[HALSTEAD]) as $metric)
-    {        
-        $path = "./metrics/" . $metrics[HALSTEAD][$metric] . " _nc_simple.cpp _DUMP_.xml";
-        $exec[HALSTEAD][$metric] = system($path);
-    }
+    $exec[STYLE]['programLineSize'] =           0;
+    $exec[STYLE]['spaceBracketsCode'] =         0;
+    $exec[STYLE]['spaceCommentsText'] =         0;
     
-    foreach (array_keys($exec[STYLE]) as $metric)
-    {        
-        $path = "./metrics/" . $metrics[STYLE][$metric] . " _nc_simple.cpp";
-        $exec[STYLE][$metric] = system($path);
-    }
-     
-    var_dump($exec);
+    $exec[MISC]['cyclomaticComplexity'] =       0;
+    
+    return $exec;
 }
 
-$mainFile = 'simple.cpp';
-$lang =  getProgrammingLanguage($mainFile);
+function executeAllMetrics($metrics, $src, $srcNC, $dump)
+{
+    return executeMetrics($metrics, $metrics, $src, $srcNC, $dump);
+}
 
+function executeMetrics($metrics, $exec, $src, $srcNC, $dump)
+{ 
+    if (isset($exec[HALSTEAD]))
+        foreach ($exec[HALSTEAD] as $metric => $val)
+        {        
+            $path = METRICS_PATH . $metrics[HALSTEAD][$metric] . " " . $srcNC . " " . $dump;
+            $exec[HALSTEAD][$metric] = system($path);
+        }
+    
+    if (isset($exec[STYLE]))
+        foreach ($exec[STYLE] as $metric => $val)
+        {        
+            $path = METRICS_PATH . $metrics[STYLE][$metric] . " " . $srcNC;
+            $exec[STYLE][$metric] = system($path);
+        }
+        
+    if (isset($exec[MISC]))
+    {
+       $exec[MISC]['cyclomaticComplexity'] =
+           system(METRICS_PATH . $metrics[MISC]['cyclomaticComplexity'] . " " . $dump);
+     
+       $exec[MISC]['linesOfCode'] = system(METRICS_PATH . $metrics[MISC]['linesOfCode'] . " " . $src);
+    }
+     
+    return $exec;
+}
+
+if ($argc != 4)
+    die("usage: php " . $argv[0] . " <source code file> <source code file with no comments> <xml dump file>\n");
+
+$src =      $argv[1];
+$srcNC =    $argv[2];
+$dump =     $argv[3];
+
+$lang =  getProgrammingLanguage($src);
 $metrics = getAllAvailableMetrics($lang);
-var_dump($metrics);
 
-executeMetrics($metrics, array());
+$exec = setMetrics();
+
+//$metrics = executeMetrics($metrics, $exec, $src, $srcNC, $dump);
+$metrics = executeAllMetrics($metrics, $src, $srcNC, $dump);
+var_dump($metrics);
 
 //system("./dump.sh " . $mainFile . " _DUMP_.xml", $retval);
 

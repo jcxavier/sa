@@ -5,6 +5,7 @@
  */
 
 // String constants
+define('METRICS_PATH', './metrics/');
 define('VERBOSE_EXT', 'Verbose');
 define('HALSTEAD', 'halstead');
 define('STYLE', 'style');
@@ -44,10 +45,10 @@ $halstead['vocabularySize'] =           'halstead/vocabularySize.sh';
 // Style metrics as defined by Submit!
 $style['blockBracketsSingle'] =         'style/blockBracketsSingle.sh';
 $style['checkTabs'] =                   'style/checkTabs.sh';
-$style['programLineSize'] =             'style/blockBracketsSingle.sh';
-$style['spaceBracketsCode'] =           'style/blockBracketsSingle.sh';
-$style['spaceCommentsText'] =           'style/blockBracketsSingle.sh';
-$style['spaceParentesisBrackets'] =     'style/blockBracketsSingle.sh';
+$style['programLineSize'] =             'style/programLineSize.sh';
+$style['spaceBracketsCode'] =           'style/spaceBracketsCode.sh';
+$style['spaceCommentsText'] =           'style/spaceCommentsText.sh';
+$style['spaceParentesisBrackets'] =     'style/spaceParentesisBrackets.sh';
 
 // Other metrics
 $misc['cyclomaticComplexity'] =         'cyclomaticComplexity.sh';
