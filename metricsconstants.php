@@ -9,6 +9,7 @@ define('METRICS_PATH', './metrics/');
 define('STYLE_VERBOSE_PATH', './metrics/style/verbose/');
 define('NC_PREFIX', '_nc_');
 define('DUMP_SCRIPT', './dump.sh');
+define('DEFAULT_DUMP_XML', '_DUMP_.xml');
 
 define('VERBOSE_EXT', 'Verbose');
 define('HALSTEAD', 'halstead');

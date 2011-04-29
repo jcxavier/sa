@@ -101,12 +101,12 @@ function executeMetrics($metrics, $exec, $src, $srcNC, $dump)
     return $exec;
 }
 
-if ($argc != 3)
-    die("usage: php " . $argv[0] . " <source code file> <xml dump file>\n");
+if ($argc < 2 || $argc > 3)
+    die("usage: php " . $argv[0] . " <source code file> [xml dump file]\n");
 
 $src =      $argv[1];
 $srcNC =    NC_PREFIX . $argv[1];
-$dump =     $argv[2];
+$dump =     ($argc == 2 ? DEFAULT_DUMP_XML : $argv[2]);
 
 if (!file_exists($src))
     die("Fatal error: source code file " . $src . " was not found\n");
