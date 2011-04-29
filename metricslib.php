@@ -7,6 +7,7 @@ function getProgrammingLanguage($filename)
     
     $pos = strrpos($filename, ".");
     
+    // file without extension
     if ($pos === false) 
         return NULL;
     
@@ -15,6 +16,7 @@ function getProgrammingLanguage($filename)
     if (isset($progExt[$ext]))
         return $progExt[$ext];
         
+    // programming language not found
     return NULL;
 }
 
@@ -30,7 +32,7 @@ function dumpFile($src, $dump)
     system(DUMP_SCRIPT . " " . $src . " " . $dump);
 }
 
-function setMetrics(/* TODO */)
+function setMetrics()
 {
     /*
     $exec[HALSTEAD]['difficultyLevel'] =        0;
@@ -69,6 +71,11 @@ function setMetrics(/* TODO */)
     return $exec;
 }
 
+function cleanTempFiles($srcNC, $dump)
+{
+    system("rm -f " . $srcNC . " " . $dump);
+}
+
 function executeAllMetrics($metrics, $src, $srcNC, $dump)
 {
     return executeMetrics($metrics, $metrics, $src, $srcNC, $dump);
@@ -78,24 +85,27 @@ function executeMetrics($metrics, $exec, $src, $srcNC, $dump)
 { 
     if (isset($exec[HALSTEAD]))
         foreach ($exec[HALSTEAD] as $metric => $val)
-        {        
-            $path = METRICS_PATH . $metrics[HALSTEAD][$metric] . " " . $srcNC . " " . $dump;
-            $exec[HALSTEAD][$metric] = system($path);
+        {
+            // float to handle two Halstead floating point metrics
+            $exec[HALSTEAD][$metric] = (float)
+                system(METRICS_PATH . $metrics[HALSTEAD][$metric] . " " . $srcNC . " " . $dump);
         }
     
     if (isset($exec[STYLE]))
         foreach ($exec[STYLE] as $metric => $val)
         {        
-            $path = METRICS_PATH . $metrics[STYLE][$metric] . " " . $srcNC;
-            $exec[STYLE][$metric] = system($path);
+            $exec[STYLE][$metric] = (int)
+                system(METRICS_PATH . $metrics[STYLE][$metric] . " " . $srcNC);
         }
         
+    // custom behavior metrics, need to be handled separately
     if (isset($exec[MISC]))
     {
-       $exec[MISC]['cyclomaticComplexity'] =
+       $exec[MISC]['cyclomaticComplexity'] = (int)
            system(METRICS_PATH . $metrics[MISC]['cyclomaticComplexity'] . " " . $dump);
      
-       $exec[MISC]['linesOfCode'] = system(METRICS_PATH . $metrics[MISC]['linesOfCode'] . " " . $src);
+       $exec[MISC]['linesOfCode'] = (int)
+           system(METRICS_PATH . $metrics[MISC]['linesOfCode'] . " " . $src);
     }
      
     return $exec;
@@ -118,12 +128,12 @@ if (!file_exists($srcNC) || !file_exists($dump))
 $lang =  getProgrammingLanguage($src);
 $metrics = getAllAvailableMetrics($lang);
 
-$exec = setMetrics();
-
+//$exec = setMetrics();
 //$metrics = executeMetrics($metrics, $exec, $src, $srcNC, $dump);
+
 $metrics = executeAllMetrics($metrics, $src, $srcNC, $dump);
-var_dump($metrics);
 
+cleanTempFiles($srcNC, $dump);
 
-
+var_export($metrics);
 ?>

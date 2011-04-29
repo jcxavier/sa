@@ -17,8 +17,8 @@ define('STYLE', 'style');
 define('MISC', 'misc');
 
 // List of defined metrics by programming language
-$metrics['C'] =         array("halstead" => array(), "style" => array(), );
-$metrics['C++'] =       array("halstead" => array(), "style" => array(), );
+$metrics['C'] =         array();
+$metrics['C++'] =       array();
 $metrics['C#'] =        array();
 $metrics['Java'] =      array();
 $metrics['Scheme'] =    array();
