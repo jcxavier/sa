@@ -11,6 +11,10 @@ if [ $# -ne 2 ]; then
     exit
 fi
 
+# Absolute path this script is in
+SCRIPTPATH=`dirname $0`
+RMCOMMENTS=$SCRIPTPATH'/rmcomments.sed'
+
 SRCCODE=$1;
 SRCCODENOCMT="_nc_"$SRCCODE
 SRCXML=${SRCCODE/%.c*/.xml}
@@ -23,4 +27,4 @@ echo -e "\n\t<SourceCodeFile> "$1" </SourceCodeFile>\n" >> $2
 eval "xgrep -x '//TranslationUnit/*[@file="$FXX"]' $SRCXML >> $2"
 echo -e "\n</AST>" >> $2
 rm $SRCXML
-./rmcomments.sed < $SRCCODE > $SRCCODENOCMT
+$RMCOMMENTS < $SRCCODE > $SRCCODENOCMT

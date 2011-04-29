@@ -8,7 +8,6 @@
 define('METRICS_PATH', './metrics/');
 define('STYLE_VERBOSE_PATH', './metrics/style/verbose/');
 define('NC_PREFIX', '_nc_');
-define('DUMP_SCRIPT', './dump.sh');
 define('DEFAULT_DUMP_XML', '_DUMP_.xml');
 
 define('VERBOSE_EXT', 'Verbose');
@@ -32,6 +31,12 @@ $progExt = array(
     'java' =>   'Java',
     'scm' =>    'Scheme',
     'sql' =>    'SQL'
+);
+
+// Map of programming language names to dump scripts
+$dumpScripts = array(
+    'C' =>      './dump.sh',
+    'C++' =>    './dump.sh'
 );
 
 // Halstead Software Science
