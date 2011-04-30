@@ -1,17 +1,36 @@
 Metrics for the Static Analysis component to integrate with DOMjudge / Moodle.
 Currently in use in my MSc thesis.
 
---- USAGE ---
-Only applies to C / C++. Uses clang and xgrep (in repo).
+-------------- Instructions for configuring xgrep ---------------
+apt-get install bzip2 xorg xorg-dev
+cd ~
+wget http://xorg.freedesktop.org/releases/individual/util/makedepend-1.0.3.tar.bz2
+wget http://wohlberg.net/public/software/xml/xgrep/xgrep-0.07.tar.gz
+tar jxf makedepend-1.0.3.tar.bz2
+tar xvz xgrep-0.07.tar.gz
+cd ~/makedepend-1.0.3.tar.bz2
+./configure && make
+make install
+cd ~/xgrep-0.07
+./configure && make
+make install
+-----------------------------------------------------------------
+
+---------------------- Scripts usage guide ----------------------
+Programming languages supported: C, C++.
+Requirements: clang, xgrep.
 
 Note: all scripts should be executed from the source file folder
-./dump.sh <SOURCE FILE> <XML DUMP FILE TO BE GENERATED>
+./dump.sh <SOURCE FILE> [XML DUMP FILE TO BE GENERATED]
 
 A _nc_<SOURCE FILE> file will be generated. This is a copy of the original file without the comments.
 In most metrics, this is the file that should be used.
 
 Example:
 ./metrics/halstead/timeToImplement.sh _nc_<SOURCE FILE> <XML DUMP FILE GENERATED>
--------------
+
+Instead, the PHP file metricslib.php can be used to generate all metrics for a given source file.
+php metricslib.php <SOURCE FILE> [XML DUMP FILE TO BE GENERATED]
+-----------------------------------------------------------------
 
 João Xavier
