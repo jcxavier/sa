@@ -2,12 +2,12 @@ Metrics for the Static Analysis component to integrate with DOMjudge / Moodle.
 Currently in use in my MSc thesis.
 
 -------------- Instructions for configuring xgrep ---------------
-apt-get install bzip2 xorg xorg-dev
+apt-get install bzip2 xorg xorg-dev libxml2-dev
 cd ~
 wget http://xorg.freedesktop.org/releases/individual/util/makedepend-1.0.3.tar.bz2
 wget http://wohlberg.net/public/software/xml/xgrep/xgrep-0.07.tar.gz
 tar jxf makedepend-1.0.3.tar.bz2
-tar xvz xgrep-0.07.tar.gz
+tar xvfz xgrep-0.07.tar.gz
 cd ~/makedepend-1.0.3.tar.bz2
 ./configure && make
 make install
