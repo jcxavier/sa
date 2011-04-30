@@ -31,7 +31,8 @@ function dumpFile($src, $dump, $lang)
 {
     global $dumpScripts;
     
-    system($dumpScripts[$lang] . " " . $src . " " . $dump);
+    system($dumpScripts[$lang] . " " . $src . " " . $dump, $retVal);
+    return $retVal;
 }
 
 function setMetrics()
@@ -71,6 +72,12 @@ function setMetrics()
     $exec[MISC]['cyclomaticComplexity'] =       0;
     
     return $exec;
+}
+
+function printMetrics($metrics)
+{
+    echo "## static analysis ##\n";
+    var_export($metrics);
 }
 
 function cleanTempFiles($srcNC, $dump)
@@ -121,22 +128,28 @@ $srcNC =    NC_PREFIX . $argv[1];
 $dump =     ($argc == 2 ? DEFAULT_DUMP_XML : $argv[2]);
 
 if (!file_exists($src))
-    die("Fatal error: source code file " . $src . " was not found\n");
+    die("Fatal error: source code file '" . $src . "' was not found\n");
 
-$lang =  getProgrammingLanguage($src);
+$lang = getProgrammingLanguage($src);
+
+if (!isset($lang))
+    die("Fatal error: programming language not supported\n");
+
+$retVal = 0;
 
 // if either the source file without comments or the dump file was not found, generate them    
 if (!file_exists($srcNC) || !file_exists($dump))
-    dumpFile($src, $dump, $lang);
+    $retVal = dumpFile($src, $dump, $lang);
+
+if ($retVal != 0)
+    die("Fatal error: dump script exited with code different than 0\n");
+    
 
 $metrics = getAllAvailableMetrics($lang);
-
-//$exec = setMetrics();
-//$metrics = executeMetrics($metrics, $exec, $src, $srcNC, $dump);
-
 $metrics = executeAllMetrics($metrics, $src, $srcNC, $dump);
+    
+if ($metrics !== NULL)
+    printMetrics($metrics);
 
 cleanTempFiles($srcNC, $dump);
-
-var_export($metrics);
 ?>
