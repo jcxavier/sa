@@ -1,6 +1,18 @@
 Metrics for the Static Analysis component to integrate with DOMjudge / Moodle.
 Currently in use in my MSc thesis.
 
+-------------- Instructions for configuring clang ---------------
+cd ~
+wget http://llvm.org/releases/2.7/llvm-2.7.tgz
+tar xvfz llvm-2.7.tgz
+cd llvm-2.7
+wget http://llvm.org/releases/2.7/clang-2.7.tgz
+tar xvfz clang-2.7.tgz
+mv clang-2.7 clang
+./configure && make
+make install
+-----------------------------------------------------------------
+
 -------------- Instructions for configuring xgrep ---------------
 apt-get install bzip2 xorg xorg-dev libxml2-dev
 cd ~
