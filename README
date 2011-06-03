@@ -29,7 +29,7 @@ make install
 -----------------------------------------------------------------
 
 ---------------------- Scripts usage guide ----------------------
-Programming languages supported: C, C++.
+Programming languages supported: C.
 Requirements: clang, xgrep.
 
 Note: all scripts should be executed from the source file folder
