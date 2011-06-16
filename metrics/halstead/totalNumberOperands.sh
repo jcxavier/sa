@@ -17,12 +17,14 @@ fi
 SRCCODE=$1
 XMLDUMP=$2
 
-IDENTIFIERS=`grep '<Var \|<Field ' -c $XMLDUMP`      # identifiers
+IDENTIFIERS=`grep '<Var \|<Field \|<Record \|<Function \|<ParmVar ' -c $XMLDUMP`      # identifier declarations
+
+ACCESS=`grep '<MemberExpr \|<DeclRefExpr ' -c $XMLDUMP` # variable calls
 
 SIGNED=`grep -w 'unsigned\|signed' -c $SRCCODE`     # signed / unsigned
 let TYPESPECS=$IDENTIFIERS+$SIGNED                  # sum with all declarations
 
 LITERALS=`grep '<*Literal file=' -c $XMLDUMP`        # all literals except booleans (reserved words)
 
-let TNOPERANDS=$IDENTIFIERS+$TYPESPECS+$LITERALS
+let TNOPERANDS=$IDENTIFIERS+$ACCESS+$TYPESPECS+$LITERALS
 echo $TNOPERANDS

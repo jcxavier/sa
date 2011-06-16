@@ -3,7 +3,7 @@
 # author: João Xavier
 # date: 20/04/2011
 #
-# metric: Space Between Parentesis and Brackets
+# metric: Space Between Parentheses and Brackets
 # language: C, C++
 #
 

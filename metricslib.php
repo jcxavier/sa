@@ -91,7 +91,7 @@ function executeAllMetrics($metrics, $src, $srcNC, $dump)
 }
 
 function executeMetrics($metrics, $exec, $src, $srcNC, $dump)
-{ 
+{
     if (isset($exec[HALSTEAD]))
         foreach ($exec[HALSTEAD] as $metric => $val)
         {
@@ -102,9 +102,15 @@ function executeMetrics($metrics, $exec, $src, $srcNC, $dump)
     
     if (isset($exec[STYLE]))
         foreach ($exec[STYLE] as $metric => $val)
-        {        
-            $exec[STYLE][$metric] = (int)
-                system(METRICS_PATH . $metrics[STYLE][$metric] . " " . $srcNC);
+        {
+            if ($metric === "spaceCommentsText") {
+                $exec[STYLE][$metric] = (int)
+                    system(METRICS_PATH . $metrics[STYLE][$metric] . " " . $src);
+            }
+            else {
+                $exec[STYLE][$metric] = (int)
+                    system(METRICS_PATH . $metrics[STYLE][$metric] . " " . $srcNC);
+            }
         }
         
     // custom behavior metrics, need to be handled separately

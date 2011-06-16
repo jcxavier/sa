@@ -18,7 +18,7 @@ SRCCODE=$1
 XMLDUMP=$2
 
 
-IDENTIFIERCOUNT=`grep '<Var \|<Field ' -c $XMLDUMP`      # identifiers
+IDENTIFIERCOUNT=`grep '<Var \|<Field \|<Record \|<Function \|<ParmVar ' -c $XMLDUMP`      # identifiers
 
 TYPESPECLIST=( 'bool' 'char' 'double' 'float' 'int' 'long' 'short' 'signed' 'unsigned' 'void' )
 TYPESPECCOUNT=0

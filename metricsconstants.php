@@ -47,6 +47,7 @@ $halstead['numberUniqueOperands'] =     'halstead/numberUniqueOperands.sh';
 $halstead['numberUniqueOperators'] =    'halstead/numberUniqueOperators.sh';
 $halstead['programLength'] =            'halstead/programLength.sh';
 $halstead['programLevel'] =             'halstead/programLevel.sh';
+$halstead['programVolume'] =            'halstead/programVolume.sh';
 $halstead['timeToImplement'] =          'halstead/timeToImplement.sh';
 $halstead['totalNumberOperands'] =      'halstead/totalNumberOperands.sh';
 $halstead['totalNumberOperators'] =     'halstead/totalNumberOperators.sh';

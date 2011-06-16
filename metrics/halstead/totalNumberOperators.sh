@@ -26,7 +26,7 @@ this\|union\|while\|namespace\|using\|try\|catch\|throw\|const_cast\|static_cast
 reinterpret_cast\|typeid\|template\|explicit\|true\|false\|typename'\
  -c $SRCCODE`   # reserved words
 
-OPERATOR=`grep '<BinaryOperator \|<UnaryOperator \|<ConditionalOperator \|<ArraySubscriptExpr \|\
+OPERATOR=`grep '<DeclStmt \|<BinaryOperator \|<UnaryOperator \|<ConditionalOperator \|<ArraySubscriptExpr \|\
 <CompoundStmt \|name="operator&.t;&.t;"'\
  -c $XMLDUMP`    # all operators
 

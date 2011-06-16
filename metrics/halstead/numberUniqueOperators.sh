@@ -50,7 +50,7 @@ for h in ${!OPHASH*}; do
     let OPERATORCOUNT=$OPERATORCOUNT+1
 done
 
-EXPLIST=( '<ConditionalOperator ' '<ArraySubscriptExpr ' '<CompoundStmt ' 'name="operator&lt;&lt;"'
+EXPLIST=( '<DeclStmt ' '<ConditionalOperator ' '<ArraySubscriptExpr ' '<CompoundStmt ' 'name="operator&lt;&lt;"'
 'name="operator&gt;&gt;"' )
 
 for EXP in ${EXPLIST[*]}; do
